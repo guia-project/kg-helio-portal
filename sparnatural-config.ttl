@@ -12,7 +12,7 @@
     a owl:Ontology .
 
 ##################################################
-# NODE SHAPES X
+# NODE SHAPES 
 ##################################################
 
 guide:UniversityCenterShape
