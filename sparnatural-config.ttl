@@ -5,7 +5,7 @@
 @prefix owl:    <http://www.w3.org/2002/07/owl#> .
 
 @prefix volipi: <http://data.sparna.fr/ontologies/volipi#> .
-@prefix guide:  <https://w3id.org/guia#> .
+@prefix guide:  <https://guia.org/> .
 @prefix sch:    <https://schema.org/> .
 
 <http://guia-project.eu/sparnatural-config>
