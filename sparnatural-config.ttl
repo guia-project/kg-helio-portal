@@ -141,7 +141,8 @@ guide:Degree-name
     a sh:PropertyShape ;
     sh:path sch:name ;
     rdfs:label "name"@en ;
-    sh:datatype rdf:langString .
+    sh:datatype rdf:langString ;
+    dash:propertyRole dash:LabelRole .
 
 guide:Course-name
     a sh:PropertyShape ;
