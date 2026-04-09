@@ -1,31 +1,26 @@
 @prefix rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix xsd:    <http://www.w3.org/2001/XMLSchema#> .
 @prefix sh:     <http://www.w3.org/ns/shacl#> .
 @prefix dash:   <http://datashapes.org/dash#> .
 @prefix owl:    <http://www.w3.org/2002/07/owl#> .
-@prefix sparnatural: <http://data.sparna.fr/ontologies/sparnatural-config-core#> .
+
+@prefix volipi: <http://data.sparna.fr/ontologies/volipi#> .
 @prefix guide:  <https://w3id.org/guia#> .
 @prefix sch:    <https://schema.org/> .
-
-#################################################################
-# ONTOLOGY HEADER
-#################################################################
 
 <http://guia-project.eu/sparnatural-config>
     a owl:Ontology .
 
-@prefix owl:    <http://www.w3.org/2002/07/owl#> .
-
-#################################################################
-# ROOT NODE SHAPES
-#################################################################
+##################################################
+# NODE SHAPES X
+##################################################
 
 guide:UniversityCenterShape
     a sh:NodeShape ;
     sh:targetClass guide:UniversityCenter ;
     rdfs:label "University Center"@en ;
-    sparnatural:faIcon "far fa-building" ;
+    rdfs:label "Centro universitario"@es ;
+    volipi:iconName "fa-solid fa-building" ;
     sh:property guide:UniversityCenter-name ;
     sh:property guide:UniversityCenter-offers .
 
@@ -33,7 +28,8 @@ guide:DegreeShape
     a sh:NodeShape ;
     sh:targetClass guide:Degree ;
     rdfs:label "Degree"@en ;
-    sparnatural:faIcon "fas fa-graduation-cap" ;
+    rdfs:label "Titulación"@es ;
+    volipi:iconName "fa-solid fa-graduation-cap" ;
     sh:property guide:Degree-name ;
     sh:property guide:Degree-hasCourse .
 
@@ -41,301 +37,179 @@ guide:CourseShape
     a sh:NodeShape ;
     sh:targetClass guide:Course ;
     rdfs:label "Course"@en ;
-    sparnatural:faIcon "fas fa-book" ;
+    rdfs:label "Asignatura"@es ;
+    volipi:iconName "fa-solid fa-book" ;
     sh:property guide:Course-name ;
-    sh:property guide:Course-code ;
-    sh:property guide:Course-semester ;
-    sh:property guide:Course-type ;
     sh:property guide:Course-hasInstance .
 
 guide:CourseGuideShape
     a sh:NodeShape ;
     sh:targetClass guide:CourseGuide ;
     rdfs:label "Course Guide"@en ;
-    sparnatural:faIcon "far fa-file-alt" ;
+    rdfs:label "Guía docente"@es ;
+    volipi:iconName "fa-regular fa-file-lines" ;
     sh:property guide:CourseGuide-name ;
-    sh:property guide:CourseGuide-teachingPeriod ;
-    sh:property guide:CourseGuide-language ;
     sh:property guide:CourseGuide-director ;
     sh:property guide:CourseGuide-instructor ;
     sh:property guide:CourseGuide-hasCompetency ;
     sh:property guide:CourseGuide-hasLearningResult ;
-    sh:property guide:CourseGuide-hasEvaluation ;
-    sh:property guide:CourseGuide-courseSchedule ;
-    sh:property guide:CourseGuide-hasDidacticResource .
+    sh:property guide:CourseGuide-hasEvaluation .
 
 guide:LecturerShape
     a sh:NodeShape ;
     sh:targetClass guide:Lecturer ;
     rdfs:label "Lecturer"@en ;
-    sparnatural:faIcon "fas fa-chalkboard-teacher" ;
-    sh:property guide:Lecturer-name ;
-    sh:property guide:Lecturer-email .
+    rdfs:label "Profesorado"@es ;
+    volipi:iconName "fa-solid fa-chalkboard-user" ;
+    sh:property guide:Lecturer-name .
 
 guide:CompetencyShape
     a sh:NodeShape ;
     sh:targetClass guide:Competency ;
     rdfs:label "Competency"@en ;
-    sparnatural:faIcon "fas fa-lightbulb" ;
+    rdfs:label "Competencia"@es ;
+    volipi:iconName "fa-solid fa-lightbulb" ;
     sh:property guide:Competency-name .
 
 guide:LearningResultShape
     a sh:NodeShape ;
     sh:targetClass guide:LearningResult ;
     rdfs:label "Learning Result"@en ;
-    sparnatural:faIcon "fas fa-check-circle" ;
+    rdfs:label "Resultado de aprendizaje"@es ;
+    volipi:iconName "fa-solid fa-circle-check" ;
     sh:property guide:LearningResult-name .
-
-guide:DidacticResourceShape
-    a sh:NodeShape ;
-    sh:targetClass guide:DidacticResource ;
-    rdfs:label "Didactic Resource"@en ;
-    sparnatural:faIcon "fas fa-book-reader" ;
-    sh:property guide:DidacticResource-title ;
-    sh:property guide:DidacticResource-type .
 
 guide:EvaluationSystemShape
     a sh:NodeShape ;
     sh:targetClass guide:EvaluationSystem ;
     rdfs:label "Evaluation System"@en ;
-    sparnatural:faIcon "fas fa-tasks" ;
-    sh:property guide:EvaluationSystem-description ;
+    rdfs:label "Sistema de evaluación"@es ;
+    volipi:iconName "fa-solid fa-list-check" ;
     sh:property guide:EvaluationSystem-hasTrial .
 
 guide:EvaluationTrialShape
     a sh:NodeShape ;
     sh:targetClass guide:EvaluationTrial ;
     rdfs:label "Evaluation Trial"@en ;
-    sparnatural:faIcon "fas fa-clipboard-check" ;
-    sh:property guide:EvaluationTrial-type ;
-    sh:property guide:EvaluationTrial-week ;
-    sh:property guide:EvaluationTrial-hasScheduleEvent ;
-    sh:property guide:EvaluationTrial-involvesCompetency .
+    rdfs:label "Prueba de evaluación"@es ;
+    volipi:iconName "fa-solid fa-clipboard-check" .
 
-guide:ScheduleShape
-    a sh:NodeShape ;
-    sh:targetClass guide:Schedule ;
-    rdfs:label "Schedule"@en ;
-    sparnatural:faIcon "far fa-calendar-alt" ;
-    sh:property guide:Schedule-event .
-
-guide:ScheduleEventShape
-    a sh:NodeShape ;
-    sh:targetClass guide:ScheduleEvent ;
-    rdfs:label "Schedule Event"@en ;
-    sparnatural:faIcon "far fa-clock" ;
-    sh:property guide:ScheduleEvent-name ;
-    sh:property guide:ScheduleEvent-hasActivity .
-
-#################################################################
-# LITERAL PROPERTIES
-#################################################################
+##################################################
+# LABEL PROPERTIES
+##################################################
 
 guide:UniversityCenter-name
     a sh:PropertyShape ;
     sh:path sch:name ;
-    rdfs:label "name"@en ;
-    sh:datatype rdf:langString .
+    sh:name "name"@en ;
+    sh:name "nombre"@es ;
+    dash:propertyRole dash:LabelRole .
 
 guide:Degree-name
     a sh:PropertyShape ;
     sh:path sch:name ;
-    rdfs:label "name"@en ;
-    sh:datatype rdf:langString ;
+    sh:name "name"@en ;
+    sh:name "nombre"@es ;
     dash:propertyRole dash:LabelRole .
 
 guide:Course-name
     a sh:PropertyShape ;
     sh:path sch:name ;
-    rdfs:label "name"@en ;
-    sh:datatype rdf:langString .
-
-guide:Course-code
-    a sh:PropertyShape ;
-    sh:path sch:courseCode ;
-    rdfs:label "course code"@en ;
-    sh:datatype xsd:integer .
-
-guide:Course-semester
-    a sh:PropertyShape ;
-    sh:path guide:semester ;
-    rdfs:label "semester"@en ;
-    sh:datatype rdf:langString .
-
-guide:Course-type
-    a sh:PropertyShape ;
-    sh:path guide:courseType ;
-    rdfs:label "course type"@en ;
-    sh:datatype rdf:langString .
+    sh:name "name"@en ;
+    sh:name "nombre"@es ;
+    dash:propertyRole dash:LabelRole .
 
 guide:CourseGuide-name
     a sh:PropertyShape ;
     sh:path sch:name ;
-    rdfs:label "name"@en ;
-    sh:datatype rdf:langString .
-
-guide:CourseGuide-teachingPeriod
-    a sh:PropertyShape ;
-    sh:path guide:teachingPeriod ;
-    rdfs:label "teaching period"@en ;
-    sh:datatype xsd:string .
-
-guide:CourseGuide-language
-    a sh:PropertyShape ;
-    sh:path sch:inLanguage ;
-    rdfs:label "in language"@en ;
-    sh:datatype rdf:langString .
+    sh:name "name"@en ;
+    sh:name "nombre"@es ;
+    dash:propertyRole dash:LabelRole .
 
 guide:Lecturer-name
     a sh:PropertyShape ;
     sh:path sch:name ;
-    rdfs:label "name"@en ;
-    sh:datatype rdf:langString .
-
-guide:Lecturer-email
-    a sh:PropertyShape ;
-    sh:path sch:email ;
-    rdfs:label "email"@en ;
-    sh:datatype xsd:string .
+    sh:name "name"@en ;
+    sh:name "nombre"@es ;
+    dash:propertyRole dash:LabelRole .
 
 guide:Competency-name
     a sh:PropertyShape ;
     sh:path sch:name ;
-    rdfs:label "name"@en ;
-    sh:datatype rdf:langString .
+    sh:name "name"@en ;
+    sh:name "nombre"@es ;
+    dash:propertyRole dash:LabelRole .
 
 guide:LearningResult-name
     a sh:PropertyShape ;
     sh:path sch:name ;
-    rdfs:label "name"@en ;
-    sh:datatype rdf:langString .
+    sh:name "name"@en ;
+    sh:name "nombre"@es ;
+    dash:propertyRole dash:LabelRole .
 
-guide:DidacticResource-title
-    a sh:PropertyShape ;
-    sh:path guide:bibliographyTitle ;
-    rdfs:label "bibliography title"@en ;
-    sh:datatype rdf:langString .
-
-guide:DidacticResource-type
-    a sh:PropertyShape ;
-    sh:path guide:bibliographyType ;
-    rdfs:label "bibliography type"@en ;
-    sh:datatype rdf:langString .
-
-guide:EvaluationSystem-description
-    a sh:PropertyShape ;
-    sh:path guide:evaluationDescription ;
-    rdfs:label "evaluation description"@en ;
-    sh:datatype rdf:langString .
-
-guide:EvaluationTrial-type
-    a sh:PropertyShape ;
-    sh:path guide:evaluationType ;
-    rdfs:label "evaluation type"@en ;
-    sh:datatype rdf:langString .
-
-guide:EvaluationTrial-week
-    a sh:PropertyShape ;
-    sh:path guide:trialWeek ;
-    rdfs:label "trial week"@en ;
-    sh:datatype rdf:langString .
-
-guide:ScheduleEvent-name
-    a sh:PropertyShape ;
-    sh:path sch:name ;
-    rdfs:label "name"@en ;
-    sh:datatype rdf:langString .
-
-#################################################################
+##################################################
 # OBJECT PROPERTIES
-#################################################################
+##################################################
 
 guide:UniversityCenter-offers
     a sh:PropertyShape ;
     sh:path guide:offers ;
-    rdfs:label "offers"@en ;
+    sh:name "offers"@en ;
+    sh:name "ofrece"@es ;
     sh:class guide:Degree .
 
 guide:Degree-hasCourse
     a sh:PropertyShape ;
     sh:path guide:hasCourse ;
-    rdfs:label "has course"@en ;
+    sh:name "has course"@en ;
+    sh:name "tiene asignatura"@es ;
     sh:class guide:Course .
 
 guide:Course-hasInstance
     a sh:PropertyShape ;
     sh:path sch:hasCourseInstance ;
-    rdfs:label "has course instance"@en ;
+    sh:name "has course instance"@en ;
+    sh:name "tiene instancia"@es ;
     sh:class guide:CourseGuide .
 
 guide:CourseGuide-director
     a sh:PropertyShape ;
     sh:path sch:director ;
-    rdfs:label "director"@en ;
+    sh:name "director"@en ;
+    sh:name "director"@es ;
     sh:class guide:Lecturer .
 
 guide:CourseGuide-instructor
     a sh:PropertyShape ;
     sh:path sch:instructor ;
-    rdfs:label "instructor"@en ;
+    sh:name "instructor"@en ;
+    sh:name "profesor"@es ;
     sh:class guide:Lecturer .
 
 guide:CourseGuide-hasCompetency
     a sh:PropertyShape ;
     sh:path guide:hasCompetency ;
-    rdfs:label "has competency"@en ;
+    sh:name "has competency"@en ;
+    sh:name "tiene competencia"@es ;
     sh:class guide:Competency .
 
 guide:CourseGuide-hasLearningResult
     a sh:PropertyShape ;
     sh:path guide:hasLearningResult ;
-    rdfs:label "has learning result"@en ;
+    sh:name "has learning result"@en ;
+    sh:name "tiene resultado de aprendizaje"@es ;
     sh:class guide:LearningResult .
 
 guide:CourseGuide-hasEvaluation
     a sh:PropertyShape ;
     sh:path guide:hasEvaluation ;
-    rdfs:label "has evaluation"@en ;
+    sh:name "has evaluation"@en ;
+    sh:name "tiene evaluación"@es ;
     sh:class guide:EvaluationSystem .
-
-guide:CourseGuide-courseSchedule
-    a sh:PropertyShape ;
-    sh:path sch:courseSchedule ;
-    rdfs:label "course schedule"@en ;
-    sh:class guide:Schedule .
-
-guide:CourseGuide-hasDidacticResource
-    a sh:PropertyShape ;
-    sh:path guide:hasDidacticResource ;
-    rdfs:label "has didactic resource"@en ;
-    sh:class guide:DidacticResource .
 
 guide:EvaluationSystem-hasTrial
     a sh:PropertyShape ;
     sh:path guide:hasEvaluationTrial ;
-    rdfs:label "has evaluation trial"@en ;
+    sh:name "has evaluation trial"@en ;
+    sh:name "tiene prueba de evaluación"@es ;
     sh:class guide:EvaluationTrial .
-
-guide:EvaluationTrial-hasScheduleEvent
-    a sh:PropertyShape ;
-    sh:path guide:hasScheduleEvent ;
-    rdfs:label "has schedule event"@en ;
-    sh:class guide:ScheduleEvent .
-
-guide:EvaluationTrial-involvesCompetency
-    a sh:PropertyShape ;
-    sh:path guide:involvesCompetency ;
-    rdfs:label "involves competency"@en ;
-    sh:class guide:Competency .
-
-guide:Schedule-event
-    a sh:PropertyShape ;
-    sh:path sch:eventSchedule ;
-    rdfs:label "event schedule"@en ;
-    sh:class guide:ScheduleEvent .
-
-guide:ScheduleEvent-hasActivity
-    a sh:PropertyShape ;
-    sh:path guide:hasActivity ;
-    rdfs:label "has activity"@en ;
-    sh:class guide:Activity .
